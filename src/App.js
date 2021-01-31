@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
@@ -66,9 +65,10 @@ function App() {
       if (e.target.id === "start") setStartClicks(startClicks + 1);
       if (timer === 0 && e.target.id === "start") setTimer(focus);
       if (timer !== 0 && e.target.id === "resume") setTimer(timer);
+      if (timer === 0 && e.target.id === "resume") return;
     }
 
-    if (e.target.id === "pause") {
+    if (e.target.id === "pause" && timer !== 0) {
       setPlay(false);
       setPause(true);
       clear();
