@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Roboto Light"), local("Roboto-Light"),
+    url(https://themes.googleusercontent.com/static/fonts/roboto/v9/Pru33qjShpZSmG3z6VYwnT8E0i7KZn-EPnyo3HZu7kw.woff)
+      format("woff");
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0px;
+  padding: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #ff5f3b;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+p,
+h1,
+h2,
+h3,
+h4,
+small {
+  color: #fff;
+  font-family: "Roboto";
+}
+
+small {
+  font-size: 12px;
+  margin: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  transition: background-color 1s;
+  transition: color 1s;
+}
+a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+button {
+  padding: 0.6rem;
+  margin: 0.2rem;
+  font-family: Roboto;
+  font-weight: bold;
+  color: #fff;
+  background-color: #f2502c;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+button:hover {
+  background-color: #cc4a2d;
+}
+
+#root {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.timer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  padding: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.timer-display {
+  width: 100%;
+  background-color: #f2502c;
+  padding-top: 0.2rem;
+  width: 280px;
+  border-bottom: 3px solid #fff;
+}
+
+.timer-display,
+h1 {
+  font-size: 2em;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding: 0.4rem;
+}
+
+.session-focus {
+  text-align: center;
+  padding: 0.3rem;
+}
+
+.session-break {
+  text-align: center;
+  padding: 0.3rem;
 }
