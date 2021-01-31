@@ -3,20 +3,20 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const [play, setPlay] = React.useState(false);
-  const [isBreak, setIsBreak] = React.useState(false);
-  const [focus, setFocus] = React.useState(1500);
-  const [rest, setRest] = React.useState(300);
-  const [timer, setTimer] = React.useState(0);
-  const [resetTimer, setResetTimer] = React.useState(false);
-  const [pause, setPause] = React.useState(false);
-  const [startClicks, setStartClicks] = React.useState(0);
-  const id = React.useRef(null);
+  const [play, setPlay] = useState(false);
+  const [isBreak, setIsBreak] = useState(false);
+  const [focus, setFocus] = useState(1500);
+  const [rest, setRest] = useState(300);
+  const [timer, setTimer] = useState(0);
+  const [resetTimer, setResetTimer] = useState(false);
+  const [pause, setPause] = useState(false);
+  const [startClicks, setStartClicks] = useState(0);
+  const id = useRef(null);
   const beepUrl = "https://freesound.org/data/previews/80/80921_1022651-lq.mp3";
 
   const usePrevious = (value) => {
-    const ref = React.useRef();
-    React.useEffect(() => {
+    const ref = useRef();
+    useEffect(() => {
       ref.current = value;
     });
     return ref.current;
@@ -92,11 +92,11 @@ function App() {
       }`;
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (timer !== 0 && play === true) setTimer(timer - 1);
   }, [play]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     id.current = setInterval(() => {
       setTimer((previousTime) => previousTime - 1);
     }, 1000);
@@ -104,7 +104,7 @@ function App() {
     return () => clear();
   }, [timer]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (timer === 0 && isBreak === false) {
       clear();
     }
@@ -122,14 +122,14 @@ function App() {
     }
   }, [timer]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (resetTimer) {
       clear();
     }
   }, [resetTimer]);
 
   let numOfPrevClicks = usePrevious(startClicks);
-  React.useEffect(() => {
+  useEffect(() => {
     if (startClicks > numOfPrevClicks && timer !== 0) {
       setTimer(focus);
     }
@@ -203,7 +203,11 @@ function App() {
         <button onClick={isTimerRunnig} id="start">
           Start
         </button>
-        <button onClick={isTimerRunnig} id={pause ? "resume" : "pause"}>
+        <button
+          disabled={resetTimer ? "disabled" : ""}
+          onClick={isTimerRunnig}
+          id={pause ? "resume" : "pause"}
+        >
           {pause ? "Resume" : "Pause"}
         </button>
         <button id="reset" onClick={reset}>
